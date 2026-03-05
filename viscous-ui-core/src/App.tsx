@@ -3,6 +3,7 @@ import FactoryManagement from './components/FactoryManagement'
 import Portfolio from './components/Portfolio'
 import ProcessMatrix from './components/ProcessMatrix'
 import Assistant from './components/Assistant'
+import { LogoWhite } from './assets/logos'
 
 type Page = 'home' | 'processo' | 'portfolio' | 'gestao'
 
@@ -445,24 +446,6 @@ export default function App() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-  const poleNRef = useRef<HTMLDivElement | null>(null)
-  const poleSRef = useRef<HTMLDivElement | null>(null)
-
-  const handleLogoMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const cx = rect.left + rect.width / 2
-    const cy = rect.top + rect.height / 2
-    const dx = e.clientX - cx
-    const dy = e.clientY - cy
-    if (poleNRef.current) poleNRef.current.style.transform = `translate(${dx * 0.3}px, ${dy * 0.3}px)`
-    if (poleSRef.current) poleSRef.current.style.transform = `translate(${dx * -0.3}px, ${dy * -0.3}px)`
-  }
-
-  const handleLogoMouseLeave = () => {
-    if (poleNRef.current) poleNRef.current.style.transform = ''
-    if (poleSRef.current) poleSRef.current.style.transform = ''
-  }
-
   return (
     <>
       {/* Grain overlay */}
@@ -533,47 +516,7 @@ export default function App() {
         alignItems: 'center',
         justifyContent: 'space-between',
       }}>
-        <div
-          className="logo-mark"
-          style={{ gap: '0.75rem', cursor: 'default' }}
-          onMouseMove={handleLogoMouseMove}
-          onMouseLeave={handleLogoMouseLeave}
-        >
-          <div style={{ display: 'flex', gap: '3px' }}>
-            <div
-              ref={poleNRef}
-              className="logo-pole"
-              style={{ height: '22px', transition: 'transform 0.3s var(--ease)' }}
-            />
-            <div
-              ref={poleSRef}
-              className="logo-pole"
-              style={{ height: '22px', transition: 'transform 0.3s var(--ease)' }}
-            />
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-            <span style={{
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 900,
-              fontSize: '0.85rem',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: '#ffffff',
-            }}>
-              Trillia
-            </span>
-            <span style={{
-              fontFamily: 'JetBrains Mono, monospace',
-              fontSize: '0.5rem',
-              letterSpacing: '0.2em',
-              color: 'var(--text-dim)',
-              marginTop: '2px',
-            }}>
-              CORE_01
-            </span>
-          </div>
-        </div>
+        <LogoWhite width={109} height={30} />
 
         <nav style={{ display: 'flex', gap: '2rem' }}>
           {NAV_ITEMS.map(({ label, page: p }) => (
