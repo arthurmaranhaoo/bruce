@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook: Fábrica de Produtos Exponenciais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0D1117;
+            color: #E6EDF3;
+        }
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+        .bg-grid {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .highlight-gold {
+            color: #FFD700;
+        }
+        .highlight-cyan {
+            color: #22D3EE;
+        }
+        .border-gold-500 {
+            border-color: #FFD700;
+        }
+         .border-cyan-500 {
+            border-color: #22D3EE;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        }
+        .card {
+            background-color: rgba(22, 27, 34, 0.7);
+            border: 1px solid rgba(48, 54, 61, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .path-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-line 2s ease-out forwards;
+        }
+        @keyframes draw-line {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fade-in 1s ease-out forwards;
+        }
+        .fade-in-delay-1 { animation-delay: 0.5s; }
+        .fade-in-delay-2 { animation-delay: 1s; }
+        .fade-in-delay-3 { animation-delay: 1.5s; }
+        @keyframes fade-in {
+            to {
+                opacity: 1;
+            }
+        }
+        .matrix-cell {
+            border: 1px solid rgba(48, 54, 61, 0.8);
+            padding: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .matrix-cell:hover {
+            background-color: rgba(48, 54, 61, 0.5);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-grid">
+
+    <div class="slide-container">
+
+        <!-- Slide 1: Capa -->
+        <div id="cover" class="slide">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 z-0">
+                 <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(48, 54, 61, 0.5)" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+            </div>
+
+            <div class="relative z-10 text-center max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-8xl font-black uppercase tracking-wider fade-in">
+                    Fábrica de Produtos <span class="highlight-gold text-glow">Exponenciais</span>
+                </h1>
+                <p class="mt-4 text-lg md:text-2xl text-gray-300 font-light fade-in fade-in-delay-1">
+                    Evolua a criação de produtos (e transforme o mercado) com a nossa metodologia de ponta a ponta.
+                </p>
+
+                <div class="mt-12 fade-in fade-in-delay-2">
+                    <svg class="mx-auto" width="80%" viewBox="0 0 800 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="path-line" d="M50 50 Q 250 -20, 400 50 T 750 50" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="50" cy="50" r="10" fill="#0D1117" stroke="#FFD700" stroke-width="3"/>
+                        <circle cx="400" cy="50" r="10" fill="#0D1117" stroke="#FFD700" stroke-width="3"/>
+                        <circle cx="750" cy="50" r="10" fill="#0D1117" stroke="#FFD700" stroke-width="3"/>
+                    </svg>
+                    <div class="flex justify-between text-white mt-4 text-sm md:text-base font-semibold">
+                        <span>H3: VALIDAÇÃO</span>
+                        <span>H2: CONSTRUÇÃO</span>
+                        <span>H1: ESCALA</span>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-gray-400 fade-in fade-in-delay-3">
+                    <p class="font-semibold">Autores:</p>
+                    <p>Eduardo Leandro, João Miguel, Marina Tieko Tanaka & Time de Produtos Neurotech</p>
+                    <p class="mt-4 text-2xl font-bold tracking-widest">NEUROTECH</p>
+                </div>
+            </div>
+             <div class="absolute bottom-5 text-gray-500 text-xs animate-pulse">
+                Role para baixo ou use as setas para navegar
+            </div>
+        </div>
+
+        <!-- Slide 2: Introdução -->
+        <div id="introduction" class="slide">
+            <div class="max-w-5xl w-full">
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 border-b-2 border-gold-500 pb-2 highlight-gold">
+                    Módulo 1: A Filosofia da Nossa Fábrica
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 text-left">
+                    <div class="card p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-4">O Que é a Fábrica de Produtos?</h3>
+                        <p class="text-gray-300">
+                            É um modelo estruturado que guia todo o ciclo de vida de um produto, desde a concepção até a escala. O objetivo é estabelecer um sistema dinâmico e de alta performance para conceber, desenvolver, lançar e evoluir nosso portfólio de produtos de dados.
+                        </p>
+                        <p class="mt-4 text-gray-300">
+                           Ela foi desenhada para nos permitir inovar de forma consistente, garantindo que estamos sempre entregando valor real para o mercado e nossos clientes.
+                        </p>
+                    </div>
+
+                    <div class="card p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-4">Nossa Filosofia</h3>
+                        <p class="text-gray-300">
+                            Flexibilidade com Governança. Nossa fábrica não impõe um processo único. Ela combina uma <strong class="highlight-gold">Esteira Principal</strong> de governança universal, <strong class="highlight-gold">Trilhas de Produção</strong> especializadas para a construção, e <strong class="highlight-gold">Ciclos de Retorno</strong> formais para a evolução dos produtos.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-8 card p-6 rounded-lg text-left">
+                    <h3 class="text-2xl font-bold mb-4">Fundamentos Conceituais</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                             <h4 class="text-xl font-semibold mb-2 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+                                Data as a Product
+                            </h4>
+                            <p class="text-gray-300">
+                                Enxergamos nossos ativos de dados como produtos de primeira classe. Isso significa que cada solução deve ter um ciclo de vida claro, donos definidos e documentação robusta (o Enxoval). Nossa Fábrica implementa essa filosofia através de uma metodologia que combina <strong class="highlight-gold">gestão ágil</strong>, <strong class="highlight-gold">boas práticas de gestão de produto</strong> e <strong class="highlight-gold">gestão tradicional</strong> nos portões de qualidade.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                Lean Startup
+                            </h4>
+                            <p class="text-gray-300">
+                                O coração da nossa fase H3 é o ciclo <strong class="highlight-gold">Construir-Medir-Aprender</strong>. Em vez de longos desenvolvimentos, rapidamente construímos um protótipo (Construir), medimos sua performance e a reação do mercado (Medir) e usamos esses aprendizados para tomar decisões (Aprender), reduzindo o risco de construir algo que ninguém quer.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                High Output Management
+                            </h4>
+                            <p class="text-gray-300">
+                                Inspirado por Andrew Grove, o pilar da nossa gestão é que o resultado de um gestor é o resultado da sua equipe e das organizações vizinhas que ele influencia. Focamos em <strong class="highlight-gold">atividades de alta alavancagem</strong>, usamos <strong class="highlight-gold">indicadores pareados</strong> para medir o que importa (quantidade e qualidade) e garantimos que o fluxo de trabalho e informação seja claro e eficiente para todos.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                Organizações Exponenciais
+                            </h4>
+                            <p class="text-gray-300">
+                                Adotamos o mindset de crescimento 10x. Nossa fábrica é desenhada para ser uma plataforma que alavanca recursos externos e internos (SCALE & IDEAS). Buscamos um <strong class="highlight-gold">Propósito Transformador Massivo (MTP)</strong> e usamos dados para criar algoritmos e engajar a comunidade, automatizando processos para alcançar um crescimento que não é linear, mas exponencial.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Componentes da Fábrica -->
+        <div id="components" class="slide">
+            <div class="max-w-6xl w-full text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 border-b-2 border-gold-500 pb-2 highlight-gold inline-block">
+                    Módulo 2: Componentes da Fábrica
+                </h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                    <!-- Card 1: Esteira Principal -->
+                    <div class="card p-6 rounded-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gray-800 p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Esteira Principal</h3>
+                        <p class="text-gray-400 text-sm">O fluxo de governança de negócio obrigatório para 100% dos produtos. Garante que todos passem pelos mesmos portões de qualidade (H3, H2, H1), independentemente de como são construídos.</p>
+                    </div>
+
+                    <!-- Card 2: Trilhas de Produção -->
+                    <div class="card p-6 rounded-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gray-800 p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Trilhas de Produção</h3>
+                        <p class="text-gray-400 text-sm">Os centros de desenvolvimento técnico especializado. Após a validação no H3, um produto é roteirizado para a trilha mais adequada à sua natureza (Modelagem, SaaS, IA Gen, etc.), onde um playbook técnico específico é executado.</p>
+                    </div>
+                    
+                    <!-- Card 3: Cabine de Sustentação -->
+                    <div class="card p-6 rounded-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gray-800 p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Cabine de Sustentação</h3>
+                        <p class="text-gray-400 text-sm">A equipe que assume a responsabilidade do produto após a "Passagem de Bola" (fim do H2). Gerencia incidentes, suporte ao cliente e o monitoramento contínuo, garantindo a estabilidade do produto em escala (H1).</p>
+                    </div>
+
+                    <!-- Card 4: Ciclos de Retorno -->
+                    <div class="card p-6 rounded-lg flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gray-800 p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 9a9 9 0 0114.13-6.36M20 15a9 9 0 01-14.13 6.36" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Ciclos de Retorno</h3>
+                        <p class="text-gray-400 text-sm">A esteira não é linear. Este mecanismo define como os produtos em mercado (H1) retornam à fábrica para evoluir, seja para uma **Melhoria** (retorno ao H2) ou para uma **Reinvenção** (retorno ao H3).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Desafios -->
+        <div id="challenges" class="slide">
+            <div class="max-w-6xl w-full">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 border-b-2 border-gold-500 pb-2 highlight-gold inline-block">
+                    Módulo 3: Desafios & O Sistema Imunológico Organizacional
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-left card p-8 rounded-lg">
+                        <p class="text-gray-300 leading-relaxed">
+                            O livro "Organizações Exponenciais" introduz o conceito de **"sistema imunológico organizacional"**: a tendência natural de uma empresa estabelecida de resistir e atacar a inovação, da mesma forma que um corpo combate um vírus. Isso se manifesta como resistência à mudança, medo de canibalizar produtos existentes, burocracia excessiva e aversão ao risco.
+                        </p>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            Nossa Fábrica de Produtos foi desenhada para ser o antídoto. Este playbook não é apenas um guia de processos; é uma ferramenta para superar esses desafios e criar produtos escaláveis da forma certa. A <strong class="highlight-gold">Esteira Principal</strong> cria um caminho claro e padronizado, reduzindo o atrito entre áreas. Os <strong class="highlight-gold">Gates de Saída</strong> combatem a inércia, forçando decisões de Go/No-Go baseadas em dados, não em opiniões. A fase <strong class="highlight-gold">H3</strong>, com seu ciclo Lean, torna a experimentação barata e segura, diminuindo o medo de errar. E o <strong class="highlight-gold">Enxoval do Produto</strong> quebra silos, garantindo que o conhecimento seja um ativo da empresa, não de indivíduos.
+                        </p>
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <img src="https://images.unsplash.com/photo-1531303414179-61b604555330?q=80&w=1887&auto=format&fit=crop" 
+                             alt="Foguete quebrando barreiras e subindo em direção ao espaço, representando a superação de desafios." 
+                             class="rounded-lg shadow-2xl w-full h-auto max-w-md object-cover border-4 border-gray-700"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x800/0D1117/FFD700?text=Inova%C3%A7%C3%A3o';">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Para Quem Serve -->
+        <div id="audience" class="slide">
+            <div class="max-w-6xl w-full text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 border-b-2 border-gold-500 pb-2 highlight-gold inline-block">
+                    Módulo 4: Para Quem Serve Este Playbook
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <!-- Card 1: Time de Produtos -->
+                    <div class="card p-8 rounded-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-gray-800 p-3 rounded-full mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold">Time de Produtos</h3>
+                        </div>
+                        <p class="text-gray-400">Para <strong class="text-white">Product Owners (POs) e Product Managers (PMs)</strong>, este playbook é o guia mestre. Ele fornece os checklists, artefatos e gates de saída necessários para navegar um produto desde a ideia até a escala, garantindo que nenhuma etapa crítica de negócio, validação ou governança seja esquecida.</p>
+                    </div>
+
+                    <!-- Card 2: Time Técnico -->
+                    <div class="card p-8 rounded-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-gray-800 p-3 rounded-full mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold">Time Técnico</h3>
+                        </div>
+                        <p class="text-gray-400">Para <strong class="text-white">Lead Techs, Arquitetos, Engenheiros e Cientistas de Dados</strong>, este playbook contextualiza o "porquê" por trás do trabalho técnico. Ele mostra como a execução de engenharia (como o PRISMA) se encaixa no ciclo de vida do negócio, clarifica os critérios de sucesso em cada fase e define os momentos-chave de interação e handover com as áreas de produto.</p>
+                    </div>
+
+                    <!-- Card 3: Gestores e Liderança -->
+                    <div class="card p-8 rounded-lg transform hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-gray-800 p-3 rounded-full mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 highlight-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V7a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold">Gestores e Liderança</h3>
+                        </div>
+                        <p class="text-gray-400">Para <strong class="text-white">Gestores e Superintendentes</strong>, este playbook é a ferramenta de governança da fábrica. Ele oferece uma visão clara do pipeline de inovação, dos critérios de investimento em cada gate e das métricas de saúde do processo. Permite acompanhar o progresso dos produtos e tomar decisões estratégicas com base em um fluxo padronizado e previsível.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Os Horizontes -->
+        <div id="horizons" class="slide">
+            <div class="max-w-7xl w-full text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 border-b-2 border-gold-500 pb-2 highlight-gold inline-block">
+                    Módulo 5: Os Horizontes da Fábrica
+                </h2>
+                <div class="card rounded-lg p-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 text-sm text-left items-stretch">
+                        <!-- Header -->
+                        <div class="matrix-cell font-bold text-lg hidden md:block self-center">Fase</div>
+                        <div class="matrix-cell font-bold text-lg hidden md:block self-center">Sub-fase 1</div>
+                        <div class="matrix-cell font-bold text-lg hidden md:block self-center">Sub-fase 2</div>
+                        <div class="matrix-cell font-bold text-lg hidden md:block self-center">Sub-fase 3</div>
+
+                        <!-- H3 Row -->
+                        <div class="matrix-cell bg-gray-800/50 flex items-center justify-center">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-black highlight-gold">H3</h3>
+                                <p class="font-semibold">VALIDAÇÃO</p>
+                                <p class="text-xs text-gray-400 mt-2">Reduzir o risco validando a tese de negócio com baixo custo.</p>
+                            </div>
+                        </div>
+                        <div class="matrix-cell">
+                            <h4 class="font-bold text-white">Discovery e Concepção</h4>
+                            <p class="text-gray-400 mt-1">Estruturar a tese do produto, definindo o problema e o público-alvo.</p>
+                        </div>
+                        <div class="matrix-cell">
+                            <h4 class="font-bold text-white">Análise de Mercado e Viabilidade</h4>
+                            <p class="text-gray-400 mt-1">Quantificar a oportunidade de negócio e analisar os riscos técnicos e legais.</p>
+                        </div>
+                        <div class="matrix-cell">
+                            <h4 class="font-bold text-white">Prova de Conceito (PoC)</h4>
+                            <p class="text-gray-400 mt-1">Obter prova tangível (quantitativa e qualitativa) do valor da solução.</p>
+                        </div>
+
+                        <!-- H2 Row -->
+                         <div class="matrix-cell bg-gray-800/50 flex items-center justify-center">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-black highlight-gold">H2</h3>
+                                <p class="font-semibold">CONSTRUÇÃO</p>
+                                <p class="text-xs text-gray-400 mt-2">Transformar a tese validada em um produto vendável e sustentável.</p>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-3 relative">
+                             <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+                                <div class="absolute top-0 left-0 w-1/3 h-full border-2 border-dashed border-cyan-500 rounded-lg">
+                                     <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-800 px-2 text-xs font-semibold highlight-cyan rounded">
+                                        TRILHAS DE PRODUÇÃO
+                                    </div>
+                                </div>
+                                <div class="absolute top-0 right-0 w-2/3 h-full border-2 border-dashed border-gold-500 rounded-lg">
+                                     <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-800 px-2 text-xs font-semibold highlight-gold rounded">
+                                        PROCESSO DE HANDOVER
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="matrix-cell">
+                                <h4 class="font-bold text-white">Engenharia e Estratégia Comercial</h4>
+                                <p class="text-gray-400 mt-1">Construir a V1 do produto e, em paralelo, estruturar o pipeline de vendas.</p>
+                            </div>
+                            <div class="matrix-cell">
+                                 <h4 class="font-bold text-white">Vendas & Início do Handover</h4>
+                                <p class="text-gray-400 mt-1">Executar a primeira venda, que valida o negócio e dispara o processo de handover.</p>
+                            </div>
+                            <div class="matrix-cell">
+                                <h4 class="font-bold text-white">Enxoval & Conclusão do Handover</h4>
+                                <p class="text-gray-400 mt-1">Finalizar a documentação, capacitar as equipes e concluir a Passagem de Bola.</p>
+                            </div>
+                        </div>
+
+                        <!-- H1 Row -->
+                         <div class="matrix-cell bg-gray-800/50 flex items-center justify-center">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-black highlight-gold">H1</h3>
+                                <p class="font-semibold">ESCALA</p>
+                                <p class="text-xs text-gray-400 mt-2">Garantir a estabilidade, escalar as vendas e evoluir o produto continuamente.</p>
+                            </div>
+                        </div>
+                        <div class="matrix-cell">
+                            <h4 class="font-bold text-white">Máquina de Vendas</h4>
+                            <p class="text-gray-400 mt-1">Implementar o GTM (Hard Launch) para escalar a geração de leads e vendas.</p>
+                        </div>
+                        <div class="matrix-cell">
+                            <h4 class="font-bold text-white">Sustentação Ativa</h4>
+                            <p class="text-gray-400 mt-1">Garantir a saúde operacional do produto com monitoramento e suporte contínuo.</p>
+                        </div>
+                        <div class="matrix-cell">
+                            <h4 class="font-bold text-white">Otimização e Evolução</h4>
+                            <p class="text-gray-400 mt-1">Utilizar dados de performance para tomar decisões de melhoria ou reinvenção.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 7: H3.1 Detalhe -->
+        <div id="h3s1" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 6: A ESTEIRA PRINCIPAL EM DETALHES</p>
+                    <h2 class="text-4xl md:text-6xl font-black">H3.1: Discovery e Concepção</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-6">
+                    <h3 class="text-xl font-bold mb-2">O que é a sub-fase?</h3>
+                    <p class="text-gray-300">É a etapa inicial onde transformamos uma ideia ou necessidade de mercado em uma tese de produto estruturada. O objetivo não é ter a solução, mas sim uma <strong class="highlight-gold">profunda clareza sobre o problema a ser resolvido</strong>, o público-alvo e o valor que se pretende entregar.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-green-400">Portão de Entrada</h4>
+                        <p class="text-sm text-gray-400">Uma nova ideia de produto (vinda de P&D, necessidade de mercado, etc.) ou um produto em "Ciclo de Reinvenção".</p>
+                    </div>
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-red-400">Portão de Saída: Alinhamento da Tese</h4>
+                        <p class="text-sm text-gray-400">PO e Lead Tech dão um "de acordo" formal de que a tese está madura para avançar para a análise de viabilidade.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Coluna 1: Etapas -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Etapas</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><span class="highlight-gold mr-2">1.</span> <div><strong class="text-white">Reunião de Alinhamento:</strong> Reunião entre PO e Lead Tech para estruturar a demanda.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">2.</span> <div><strong class="text-white">Documentação da Tese:</strong> Preenchimento da Tese de Produto, definindo problema, público, premissas e incertezas.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">3.</span> <div><strong class="text-white">Pesquisa Inicial:</strong> Busca rápida de insumos para validar ou refutar as premissas iniciais.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">4.</span> <div><strong class="text-white">Consolidação:</strong> Formalização da "Tese de Produto" como artefato de saída.</div></li>
+                        </ul>
+                    </div>
+                    <!-- Coluna 2: Artefatos -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Artefatos Principais</h4>
+                        <div class="space-y-3 text-sm">
+                            <p><strong class="text-white">Tese de Produto:</strong> O documento central que formaliza o problema, público-alvo e as hipóteses do produto.</p>
+                            <p class="mt-2"><strong class="text-white">💎 Dicionário de Dados (V1):</strong> Início do mapeamento dos dados, termos e regras de negócio essenciais para o produto.</p>
+                        </div>
+                    </div>
+                     <!-- Coluna 3: Checklist -->
+                    <div class="card rounded-lg p-6">
+                         <h4 class="text-lg font-bold mb-3">Checklist de Saída</h4>
+                         <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Tese do Produto documentada.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Premissas e incertezas mapeadas.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Reuniões internas de alinhamento (PO & Lead Tech) realizadas.</li>
+                         </ul>
+                    </div>
+                    <!-- Coluna 4: Responsáveis -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Responsáveis</h4>
+                        <div class="space-y-3 text-sm">
+                            <ul class="list-disc list-inside text-gray-400 mt-1">
+                                <li><strong class="text-gray-200">Product Owner (PO):</strong> Lidera o processo, facilita o alinhamento e é o dono final dos artefatos.</li>
+                                <li><strong class="text-gray-200">Lead Tech:</strong> Co-cria a tese, validando as premissas técnicas e contribuindo com a visão de solução.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Coluna 5: Indicadores -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Indicadores-Chave</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Lead Time da Ideia à Tese:</strong> Tempo para estruturar uma nova oportunidade.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Nota de Clareza da Tese (1-5):</strong> Medida qualitativa do alinhamento entre PO e Lead Tech.</p>
+                        </div>
+                    </div>
+                     <!-- Coluna 6: Red Flags -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Red Flags / Alertas</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Divergência de Entendimento:</strong> PO e Lead Tech descrevem o problema ou a solução de formas fundamentalmente diferentes ao final da fase. Isso indica um desalinhamento grave que precisa ser corrigido antes de prosseguir.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Slide 8: H3.2 Detalhe -->
+        <div id="h3s2" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 6: A ESTEIRA PRINCIPAL EM DETALHES</p>
+                    <h2 class="text-4xl md:text-6xl font-black">H3.2: Análise de Mercado e Viabilidade</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-6">
+                    <h3 class="text-xl font-bold mb-2">O que é a sub-fase?</h3>
+                    <p class="text-gray-300">É a etapa analítica onde transformamos a tese de produto em uma oportunidade de negócio concreta e defensável. O foco é <strong class="highlight-gold">quantificar o potencial de mercado</strong>, analisar riscos (legais, de segurança e técnicos) e consolidar tudo em um Business Case para justificar o investimento na próxima fase.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-green-400">Portão de Entrada</h4>
+                        <p class="text-sm text-gray-400">"Alinhamento da Tese" concluído, com a Tese de Produto formalizada e acordada entre PO e Lead Tech.</p>
+                    </div>
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-red-400">Portão de Saída: Revisão de Viabilidade e Go-to-PoC</h4>
+                        <p class="text-sm text-gray-400">Aprovação do Business Case e dos pareceres de viabilidade, autorizando a alocação de recursos para a fase de prova de conceito.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Etapas -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Etapas</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><span class="highlight-gold mr-2">1.</span> <div><strong class="text-white">Análise de Mercado:</strong> Estimar o potencial (TAM, SAM, SOM) e analisar a concorrência.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">2.</span> <div><strong class="text-white">Estudo de Viabilidade:</strong> Conduzir a análise de riscos e a viabilidade técnica.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">3.</span> <div><strong class="text-white">Validação Privacy by Design:</strong> Apresentar a solução no comitê para garantir conformidade com a privacidade de dados.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">4.</span> <div><strong class="text-white">Estruturação do Business Case:</strong> Consolidar todas as análises, incluindo projeções financeiras.</div></li>
+                        </ul>
+                    </div>
+                    <!-- Artefatos -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Artefatos Principais</h4>
+                        <div class="space-y-3 text-sm">
+                            <p><strong class="text-white">Business Case:</strong> Documento que justifica o investimento no produto.</p>
+                            <p class="mt-2"><strong class="text-white">💎 Parecer de Viabilidade Técnica:</strong> Análise do Lead Tech sobre a exequibilidade da solução.</p>
+                        </div>
+                    </div>
+                     <!-- Checklist -->
+                    <div class="card rounded-lg p-6">
+                         <h4 class="text-lg font-bold mb-3">Checklist de Saída</h4>
+                         <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Business Case completo.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Pareceres de viabilidade (técnico e de riscos) anexados.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Validação na reunião Privacy by Design realizada.</li>
+                         </ul>
+                    </div>
+                    <!-- Responsáveis -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Responsáveis</h4>
+                        <div class="space-y-3 text-sm">
+                            <ul class="list-disc list-inside text-gray-400 mt-1">
+                                <li><strong class="text-gray-200">Product Owner (PO):</strong> Lidera a análise de mercado e a construção do Business Case.</li>
+                                <li><strong class="text-gray-200">Lead Tech:</strong> Lidera o estudo de viabilidade técnica e fornece os insumos de custo e esforço.</li>
+                                <li><strong class="text-gray-200">Apoio:</strong> Marketing, Jurídico, SI, Governança, Pricing.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Indicadores -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Indicadores-Chave</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Lead Time da Viabilidade:</strong> Tempo para concluir todas as análises da fase.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Índice de Viabilidade:</strong> Classificação do produto na matriz Potencial de Negócio vs. Complexidade Técnica.</p>
+                        </div>
+                    </div>
+                     <!-- Red Flags -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Red Flags / Alertas</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">"Showstopper" de Viabilidade:</strong> Um parecer técnico ou jurídico que aponte um risco impeditivo para a continuidade do projeto. Ignorar este alerta pode levar a grandes prejuízos futuros.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: H3.3 Detalhe -->
+        <div id="h3s3" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 6: A ESTEIRA PRINCIPAL EM DETALHES</p>
+                    <h2 class="text-4xl md:text-6xl font-black">H3.3: Prova de Conceito e Validação</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-6">
+                    <h3 class="text-xl font-bold mb-2">O que é a sub-fase?</h3>
+                    <p class="text-gray-300">É a etapa final do H3, onde a teoria encontra a prática. O foco é obter <strong class="highlight-gold">prova tangível, tanto qualitativa quanto quantitativa</strong>, de que a solução proposta é valiosa para o cliente, gerando um "Caso de Sucesso" que será a peça final para justificar o investimento no desenvolvimento do produto.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-green-400">Portão de Entrada</h4>
+                        <p class="text-sm text-gray-400">"Revisão de Viabilidade e Go-to-PoC" concluída, com o Business Case aprovado para a fase de testes práticos.</p>
+                    </div>
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-red-400">Portão de Saída: Roteirização do Produto para o H2</h4>
+                        <p class="text-sm text-gray-400">Aprovação (Go/No-Go) para o investimento no desenvolvimento e definição da Trilha de Produção técnica que o produto seguirá.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Etapas -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Etapas</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><span class="highlight-gold mr-2">1.</span> <div><strong class="text-white">Definição da Estratégia e Esteira Técnica:</strong> Escolher a abordagem (Backtest, PoC, Lab) e desenhar a esteira técnica para o teste.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">2.</span> <div><strong class="text-white">Preparação dos Materiais de Apoio:</strong> Criar o "Produto de Papel" e o "Roteiro de Entrevistas" para a interação com clientes.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">3.</span> <div><strong class="text-white">Execução da Validação:</strong> Conduzir os testes técnicos e, em paralelo, as entrevistas com clientes.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">4.</span> <div><strong class="text-white">Consolidação dos Resultados:</strong> Analisar os dados e documentar tudo no Relatório de Validação.</div></li>
+                        </ul>
+                    </div>
+                    <!-- Artefatos -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Artefatos Principais</h4>
+                        <div class="space-y-3 text-sm">
+                            <p><strong class="text-white">Relatório de Validação:</strong> Consolida os resultados e a recomendação final de Go/No-Go.</p>
+                            <p class="mt-2"><strong class="text-white">💎 Esteira Técnica do PoC/Backtest:</strong> O código e a infraestrutura usados para o teste.</p>
+                            <p class="mt-2"><strong class="text-white">Produto de Papel:</strong> Apresentação ou protótipo para o cliente.</p>
+                        </div>
+                    </div>
+                     <!-- Checklist -->
+                    <div class="card rounded-lg p-6">
+                         <h4 class="text-lg font-bold mb-3">Checklist de Saída</h4>
+                         <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Relatório de Validação finalizado.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> "Caso de Sucesso" quantitativo gerado.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Apresentação para a Roteirização pronta.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> 💎 Trilha de Produção do produto para o H2 definida.</li>
+                         </ul>
+                    </div>
+                    <!-- Responsáveis -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Responsáveis</h4>
+                        <div class="space-y-3 text-sm">
+                            <ul class="list-disc list-inside text-gray-400 mt-1">
+                                <li><strong class="text-gray-200">Product Owner (PO):</strong> Lidera a validação qualitativa com clientes e consolida os resultados.</li>
+                                <li><strong class="text-gray-200">Lead Tech:</strong> Lidera a execução da prova técnica (Backtest, PoC, Lab).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Indicadores -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Indicadores-Chave</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Resultado de Performance (Uplift %):</strong> A medida quantitativa do valor gerado pelo protótipo.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Taxa de Sucesso do PoC:</strong> % de testes que atingem os critérios de sucesso.</p>
+                        </div>
+                    </div>
+                     <!-- Red Flags -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Red Flags / Alertas</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Indiferença do Cliente:</strong> Um resultado técnico bom, mas com um feedback qualitativo do tipo "interessante, mas eu não pagaria por isso".</p>
+                            <p class="text-gray-400 mt-2"><strong class="text-white">Bloqueio de Validação:</strong> Ausência de clientes dispostos a testar a solução ou um tempo excessivamente longo para conseguir um parceiro para a validação.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: H2.1 Detalhe -->
+        <div id="h2s1" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 6: A ESTEIRA PRINCIPAL EM DETALHES</p>
+                    <h2 class="text-4xl md:text-6xl font-black">H2.1: Engenharia e Estratégia Comercial</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-6">
+                    <h3 class="text-xl font-bold mb-2">O que é a sub-fase?</h3>
+                    <p class="text-gray-300">É a etapa onde a tese validada se transforma em um produto real, executado dentro da <strong class="highlight-gold">Trilha de Produtização</strong> escolhida (a Frente Técnica). O foco é duplo: <strong class="highlight-gold">construir a Versão 1.0 do produto</strong> de forma robusta e escalável e, em paralelo, <strong class="highlight-gold">estruturar a estratégia comercial</strong> para que, no momento em que a V1 estiver pronta, o caminho para o mercado já esteja pavimentado.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-green-400">Portão de Entrada</h4>
+                        <p class="text-sm text-gray-400">Aprovação (Go) na "Roteirização do Produto para o H2", com a Trilha de Produção técnica já definida.</p>
+                    </div>
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-red-400">Portão de Saída: Entrega da V1 e Alinhamento Comercial</h4>
+                        <p class="text-sm text-gray-400">A V1 do produto está tecnicamente pronta e a estratégia comercial inicial está estruturada e alinhada para o início da campanha de vendas.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Etapas -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Etapas</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><span class="highlight-gold mr-2">1.</span> <div><strong class="text-white">Frente Técnica:</strong> Planejamento da engenharia, execução em trilhas (Dados, Core, UI), integração, QA e fechamento técnico com a entrega da V1.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">2.</span> <div><strong class="text-white">Frente Comercial:</strong> Definição de leads, estruturação do pipeline de vendas, definição do modelo de pricing e preparação do discurso de vendas.</div></li>
+                        </ul>
+                    </div>
+                    <!-- Artefatos -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Artefatos Principais</h4>
+                        <div class="space-y-3 text-sm">
+                            <p><strong class="text-white">💎 MVP como Primeiro Release (V1):</strong> Primeira versão comercializável do produto, se aplicável.</p>
+                            <p class="mt-2"><strong class="text-white">💎 Data Handoff & Homologações:</strong> Documento que formaliza a entrega e validação dos dados.</p>
+                            <p class="mt-2"><strong class="text-white">Pipeline de Vendas Criado:</strong> Oportunidades estruturadas no CRM.</p>
+                        </div>
+                    </div>
+                     <!-- Checklist -->
+                    <div class="card rounded-lg p-6">
+                         <h4 class="text-lg font-bold mb-3">Checklist de Saída</h4>
+                         <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> V1 do produto aprovada no QA.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Data Handoff e homologações concluídos.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Demo interna da V1 realizada.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Pipeline de vendas e pricing definidos.</li>
+                         </ul>
+                    </div>
+                    <!-- Responsáveis -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Responsáveis</h4>
+                        <div class="space-y-3 text-sm">
+                            <ul class="list-disc list-inside text-gray-400 mt-1">
+                                <li><strong class="text-gray-200">Lead Tech & Squad:</strong> Lideram a construção técnica.</li>
+                                <li><strong class="text-gray-200">Product Owner (PO):</strong> Gerencia o backlog e lidera a frente comercial.</li>
+                                <li><strong class="text-gray-200">Apoio:</strong> Vendas, Pricing.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Indicadores -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Indicadores-Chave</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Lead Time de Construção da V1:</strong> Tempo desde o "Go" do H3 até a entrega da V1.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Densidade de Bugs Críticos:</strong> Medida da qualidade da engenharia.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Valor do Pipeline Criado (ARR/TCV):</strong> Potencial de receita das oportunidades geradas.</p>
+                        </div>
+                    </div>
+                     <!-- Red Flags -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Red Flags / Alertas</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Acúmulo de Débito Técnico:</strong> Tomar atalhos que comprometem a arquitetura para acelerar a entrega. Um produto que nasce com alto débito técnico terá um H1 muito custoso.</p>
+                            <p class="text-gray-400 mt-2"><strong class="text-white">Pipeline de Vendas Fraco:</strong> Ausência de clientes interessados ou um pipeline de vendas muito pequeno ao final da construção, indicando um desalinhamento com o mercado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 11: H2.2 Detalhe -->
+        <div id="h2s2" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 6: A ESTEIRA PRINCIPAL EM DETALHES</p>
+                    <h2 class="text-4xl md:text-6xl font-black">H2.2: Vendas e Início do Handover</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-6">
+                    <h3 class="text-xl font-bold mb-2">O que é a sub-fase?</h3>
+                    <p class="text-gray-300">Com a V1 do produto pronta, o foco total é na <strong class="highlight-gold">validação comercial</strong>. O objetivo é executar a primeira venda como prova definitiva de que há um mercado pagante e, com isso, disparar o processo formal de <strong class="highlight-gold">handover</strong> para as áreas de tecnologia, preparando o produto para ser operacionalizado.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-green-400">Portão de Entrada</h4>
+                        <p class="text-sm text-gray-400">"Entrega da V1 e Alinhamento Comercial" concluído, com o produto pronto e a estratégia de vendas definida.</p>
+                    </div>
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-red-400">Portão de Saída: Validação Comercial e Início do Handover</h4>
+                        <p class="text-sm text-gray-400">Primeiro contrato assinado e "Formulário de Cadastro Técnico" submetido, iniciando formalmente a transição para a sustentação.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Etapas -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Etapas</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><span class="highlight-gold mr-2">1.</span> <div><strong class="text-white">Lançamento da Campanha de Vendas:</strong> Prospecção ativa dos leads estratégicos.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">2.</span> <div><strong class="text-white">Criação de Materiais de Vendas:</strong> Produção de apresentações e propostas-padrão.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">3.</span> <div><strong class="text-white">Suporte Especializado à Venda:</strong> PO e Lead Tech participam de reuniões-chave com clientes.</div></li>
+                             <li class="flex items-start"><span class="highlight-gold mr-2">4.</span> <div><strong class="text-white">Primeira Venda & Gatilho do Handover:</strong> Após o contrato assinado, o PO submete o "Formulário de Cadastro Técnico".</div></li>
+                        </ul>
+                    </div>
+                    <!-- Artefatos -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Artefatos Principais</h4>
+                        <div class="space-y-3 text-sm">
+                            <p><strong class="text-white">Contrato Assinado (1ª Venda):</strong> A prova final da validação comercial.</p>
+                            <p class="mt-2"><strong class="text-white">Formulário de Cadastro Técnico:</strong> O gatilho que inicia o processo de handover.</p>
+                            <p class="mt-2"><strong class="text-white">Formulário de Implantação de Cliente:</strong> Registra as especificidades de cada novo cliente.</p>
+                        </div>
+                    </div>
+                     <!-- Checklist -->
+                    <div class="card rounded-lg p-6">
+                         <h4 class="text-lg font-bold mb-3">Checklist de Saída</h4>
+                         <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Ao menos um contrato de venda assinado.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Formulário de Implantação de Cliente preenchido.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Formulário de Cadastro Técnico submetido.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> 💎 Primeira entrega produtiva (implantação) realizada.</li>
+                         </ul>
+                    </div>
+                    <!-- Responsáveis -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Responsáveis</h4>
+                        <div class="space-y-3 text-sm">
+                            <ul class="list-disc list-inside text-gray-400 mt-1">
+                                <li><strong class="text-gray-200">Product Owner (PO):</strong> Lidera a criação dos materiais e apoia a venda.</li>
+                                <li><strong class="text-gray-200">Equipe de Negócios:</strong> Executa a campanha de vendas.</li>
+                                <li><strong class="text-gray-200">Lead Tech:</strong> Fornece suporte técnico especializado nas negociações.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Indicadores -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Indicadores-Chave</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Ciclo de Vendas (1ª Venda):</strong> Tempo do primeiro contato ao contrato assinado.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Receita Convertida (ARR/TCV):</strong> Valor do primeiro contrato.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Taxa de Conversão (Lead para Venda):</strong> % de leads abordados que se tornam clientes.</p>
+                        </div>
+                    </div>
+                     <!-- Red Flags -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Red Flags / Alertas</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Necessidade de Customização para Vender:</strong> Se para fechar a venda é preciso prometer muitas funcionalidades fora do escopo da V1. Isso pode indicar que o produto não é escalável.</p>
+                            <p class="text-gray-400 mt-2"><strong class="text-white">Falha na Implantação:</strong> Dificuldades ou desalinhamentos na primeira entrega produtiva para o cliente, indicando que os processos de delivery ou o próprio produto não estão maduros.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: H2.3 Detalhe -->
+        <div id="h2s3" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 6: A ESTEIRA PRINCIPAL EM DETALHES</p>
+                    <h2 class="text-4xl md:text-6xl font-black">H2.3: GTM, Enxoval e Capacitação</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-6">
+                    <h3 class="text-xl font-bold mb-2">O que é a sub-fase?</h3>
+                    <p class="text-gray-300">É a fase final de preparação para a escala. O foco é <strong class="highlight-gold">formalizar todo o conhecimento do produto</strong> em um local centralizado (Enxoval), <strong class="highlight-gold">capacitar as equipes</strong> que irão vendê-lo e dar suporte, e executar um lançamento controlado (Soft Launch) para garantir que o processo de vendas e operações funciona com autonomia.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-green-400">Portão de Entrada</h4>
+                        <p class="text-sm text-gray-400">"Validação Comercial e Início do Handover" concluído, com a primeira venda realizada e o processo de handover iniciado.</p>
+                    </div>
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-red-400">Portão de Saída: Passagem de Bola</h4>
+                        <p class="text-sm text-gray-400">Transferência formal da responsabilidade de sustentação do produto para a equipe de Operações, marcando o fim do H2.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Etapas -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Etapas</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><span class="highlight-gold mr-2">1.</span> <div><strong class="text-white">Construção do Enxoval:</strong> PO e Lead Tech finalizam toda a documentação de negócio e técnica no Confluence.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">2.</span> <div><strong class="text-white">Capacitação das Equipes:</strong> Realização de treinamentos formais para Vendas, CS e Operações/Sustentação.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">3.</span> <div><strong class="text-white">Execução do Soft Launch:</strong> Lançamento controlado para um grupo maior de clientes para validar a replicabilidade.</div></li>
+                             <li class="flex items-start"><span class="highlight-gold mr-2">4.</span> <div><strong class="text-white">Validação de Maturidade:</strong> O PM valida se o produto está maduro para ser sustentado em escala.</div></li>
+                             <li class="flex items-start"><span class="highlight-gold mr-2">5.</span> <div><strong class="text-white">Passagem de Bola:</strong> Preenchimento do formulário que oficializa a transferência para Operações.</div></li>
+                        </ul>
+                    </div>
+                    <!-- Artefatos -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Artefatos Principais</h4>
+                        <div class="space-y-3 text-sm">
+                            <p><strong class="text-white">💎 Enxoval do Produto (Final):</strong> A fonte única da verdade sobre o produto, completa e validada.</p>
+                            <p class="mt-2"><strong class="text-white">Plano de GTM (Soft Launch):</strong> Documento com as metas e estratégias do lançamento controlado.</p>
+                            <p class="mt-2"><strong class="text-white">Formulário de Passagem de Bola:</strong> O artefato que formaliza o fim do H2.</p>
+                        </div>
+                    </div>
+                     <!-- Checklist -->
+                    <div class="card rounded-lg p-6">
+                         <h4 class="text-lg font-bold mb-3">Checklist de Saída</h4>
+                         <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Enxoval completo e validado.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Treinamentos para Vendas, CS e Operações concluídos.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Produto com mais de um cliente (replicabilidade comprovada).</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Formulário de Passagem de Bola assinado.</li>
+                         </ul>
+                    </div>
+                    <!-- Responsáveis -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Responsáveis</h4>
+                        <div class="space-y-3 text-sm">
+                            <ul class="list-disc list-inside text-gray-400 mt-1">
+                                <li><strong class="text-gray-200">Product Owner (PO):</strong> Lidera a finalização do Enxoval e o treinamento das áreas de negócio.</li>
+                                <li><strong class="text-gray-200">Lead Tech:</strong> Lidera a documentação e o treinamento técnico para Operações.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Indicadores -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Indicadores-Chave</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Lead Time da Passagem de Bola:</strong> Tempo para concluir a operacionalização.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Índice de Autonomia Operacional:</strong> Nº de escalonamentos para o time de produto após o handover.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Receita Replicada (ARR/TCV):</strong> Soma da receita dos novos clientes do Soft Launch.</p>
+                        </div>
+                    </div>
+                     <!-- Red Flags -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Red Flags / Alertas</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Baixa Confiança das Equipes:</strong> Se, após a capacitação, as equipes de Operações ou CS não se sentem seguras para suportar o produto. Isso indica que a "Passagem de Bola" será problemática.</p>
+                            <p class="text-gray-400 mt-2"><strong class="text-white">Vendas Baixas no Soft Launch:</strong> Se as vendas estagnam após o primeiro cliente, indicando que a replicabilidade do produto é baixa ou o mercado é menor que o esperado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: H1.1 Detalhe -->
+        <div id="h1s1" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 6: A ESTEIRA PRINCIPAL EM DETALHES</p>
+                    <h2 class="text-4xl md:text-6xl font-black">H1.1: Máquina de Vendas (Hard Launch)</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-6">
+                    <h3 class="text-xl font-bold mb-2">O que é a sub-fase?</h3>
+                    <p class="text-gray-300">É a etapa onde o produto, já validado e com processos de sustentação estabelecidos, entra em modo de escala. O foco é implementar uma estratégia de Go-To-Market (GTM) agressiva para <strong class="highlight-gold">escalar as vendas de forma previsível</strong>, transformando o produto em uma verdadeira "máquina de vendas" e maximizando a geração de leads.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-green-400">Portão de Entrada</h4>
+                        <p class="text-sm text-gray-400">"Passagem de Bola" concluída, com o produto formalmente sob a responsabilidade da equipe de Operações/Sustentação.</p>
+                    </div>
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-red-400">Portão de Saída: Revisão Trimestral de GTM (QBR)</h4>
+                        <p class="text-sm text-gray-400">Análise crítica dos resultados da estratégia de escala para ajustar o plano de marketing e vendas para o próximo trimestre.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Etapas -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Etapas</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><span class="highlight-gold mr-2">1.</span> <div><strong class="text-white">Execução do Plano de GTM (Hard Launch):</strong> Lançamento de campanhas de marketing digital, participação em eventos, etc.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">2.</span> <div><strong class="text-white">Criação de Materiais de Comunicação:</strong> Desenvolvimento de Demos, Webinars, Vídeos e outros materiais de topo de funil.</div></li>
+                             <li class="flex items-start"><span class="highlight-gold mr-2">3.</span> <div><strong class="text-white">Análise de Resultados:</strong> Acompanhamento contínuo dos KPIs de marketing e vendas.</div></li>
+                        </ul>
+                    </div>
+                    <!-- Artefatos -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Artefatos Principais</h4>
+                        <div class="space-y-3 text-sm">
+                            <p><strong class="text-white">Plano de GTM (Hard Launch):</strong> Documento detalhado da estratégia de marketing e vendas para a escala.</p>
+                            <p class="mt-2"><strong class="text-white">Materiais de Marketing:</strong> Demos, vídeos, webinars, blog posts, etc.</p>
+                        </div>
+                    </div>
+                     <!-- Checklist -->
+                    <div class="card rounded-lg p-6">
+                         <h4 class="text-lg font-bold mb-3">Checklist de Saída</h4>
+                         <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Resultados de marketing (leads, CAC) analisados.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Desempenho de vendas comparado com as metas.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Plano de GTM para o próximo trimestre ajustado.</li>
+                         </ul>
+                    </div>
+                    <!-- Responsáveis -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Responsáveis</h4>
+                        <div class="space-y-3 text-sm">
+                            <ul class="list-disc list-inside text-gray-400 mt-1">
+                                <li><strong class="text-gray-200">Product Owner (PO):</strong> Fornece a visão do produto para as campanhas.</li>
+                                <li><strong class="text-gray-200">Marketing & Vendas:</strong> Lideram a execução da estratégia de GTM.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Indicadores -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Indicadores-Chave</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Custo de Aquisição de Cliente (CAC):</strong> Custo para adquirir um novo cliente em escala.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Leads Gerados (MQL/SQL):</strong> Volume de leads qualificados gerados pelas campanhas.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Crescimento da Receita (MoM/QoQ):</strong> Aumento percentual da receita mês a mês ou trimestre a trimestre.</p>
+                        </div>
+                    </div>
+                     <!-- Red Flags -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Red Flags / Alertas</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">CAC Elevado:</strong> Se o custo para adquirir clientes for maior que o Lifetime Value (LTV), o modelo de negócio não é sustentável.</p>
+                             <p class="text-gray-400 mt-2"><strong class="text-white">Estagnação do Funil:</strong> Se um grande volume de leads não se converte em vendas, indicando problemas na qualificação ou no processo de vendas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: H1.2 Detalhe -->
+        <div id="h1s2" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 6: A ESTEIRA PRINCIPAL EM DETALHES</p>
+                    <h2 class="text-4xl md:text-6xl font-black">H1.2: Sustentação Ativa e Monitoramento</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-6">
+                    <h3 class="text-xl font-bold mb-2">O que é a sub-fase?</h3>
+                    <p class="text-gray-300">É a etapa de operação contínua do produto em escala. O foco é <strong class="highlight-gold">garantir a estabilidade e a saúde operacional</strong> do produto, com processos de suporte e monitoramento bem estabelecidos para assegurar a qualidade da entrega e a satisfação do cliente.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-green-400">Portão de Entrada</h4>
+                        <p class="text-sm text-gray-400">Produto operando em escala após o Hard Launch, com um fluxo contínuo de novos clientes.</p>
+                    </div>
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-red-400">Portão de Saída: Revisão de Saúde do Produto</h4>
+                        <p class="text-sm text-gray-400">Análise periódica (mensal/quinzenal) dos dashboards para identificar anomalias, problemas ou oportunidades de forma proativa.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Etapas -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Etapas</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><span class="highlight-gold mr-2">1.</span> <div><strong class="text-white">Sustentação Ativa:</strong> A equipe de Operações gerencia incidentes, suporte e implantações, seguindo o Enxoval.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">2.</span> <div><strong class="text-white">Monitoramento Técnico:</strong> A equipe de Operações monitora a saúde técnica (latência, erros, infraestrutura).</div></li>
+                             <li class="flex items-start"><span class="highlight-gold mr-2">3.</span> <div><strong class="text-white">💎 Monitoramento da Bilhetagem:</strong> Acompanhamento para garantir a precisão da cobrança e identificar oportunidades de upsell.</div></li>
+                        </ul>
+                    </div>
+                    <!-- Artefatos -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Artefatos Principais</h4>
+                        <div class="space-y-3 text-sm">
+                            <p><strong class="text-white">💎 Dashboards de Monitoramento Técnico:</strong> Painéis com os KPIs de saúde técnica do produto.</p>
+                            <p class="mt-2"><strong class="text-white">Relatórios de Incidentes:</strong> Documentação de problemas e suas resoluções.</p>
+                        </div>
+                    </div>
+                     <!-- Checklist -->
+                    <div class="card rounded-lg p-6">
+                         <h4 class="text-lg font-bold mb-3">Checklist de Saída</h4>
+                         <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Dashboards técnicos revisados.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Principais incidentes do período analisados.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Saúde geral do produto classificada (Verde/Amarelo/Vermelho).</li>
+                         </ul>
+                    </div>
+                    <!-- Responsáveis -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Responsáveis</h4>
+                        <div class="space-y-3 text-sm">
+                            <ul class="list-disc list-inside text-gray-400 mt-1">
+                                <li><strong class="text-gray-200">Equipe de Operações/Sustentação:</strong> Lidera a sustentação e o monitoramento técnico.</li>
+                                <li><strong class="text-gray-200">Customer Success (CS):</strong> Coleta feedbacks e monitora a satisfação do cliente.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Indicadores -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Indicadores-Chave</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Uptime / Disponibilidade (%):</strong> Percentual de tempo que o produto esteve disponível.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Taxa de Churn (%):</strong> Percentual de clientes que cancelam o serviço.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Inconsistências de Bilhetagem:</strong> Nº de divergências encontradas na cobrança vs. uso.</p>
+                        </div>
+                    </div>
+                     <!-- Red Flags -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Red Flags / Alertas</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Aumento de Incidentes Críticos:</strong> Um aumento súbito no número de incidentes graves, indicando problemas de estabilidade ou escalabilidade.</p>
+                             <p class="text-gray-400 mt-2"><strong class="text-white">Queda no NPS ou Aumento do Churn:</strong> Sinais claros de que o produto não está a atender às expectativas dos clientes em produção.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: H1.3 Detalhe -->
+        <div id="h1s3" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 6: A ESTEIRA PRINCIPAL EM DETALHES</p>
+                    <h2 class="text-4xl md:text-6xl font-black">H1.3: Otimização e Evolução Contínua</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-6">
+                    <h3 class="text-xl font-bold mb-2">O que é a sub-fase?</h3>
+                    <p class="text-gray-300">É a etapa estratégica onde utilizamos os dados e insights gerados pelo monitoramento contínuo para tomar decisões sobre o futuro do produto. O foco é <strong class="highlight-gold">analisar a performance de negócio</strong> e decidir se o produto deve ser otimizado, se novas funcionalidades devem ser adicionadas, ou se ele precisa ser completamente reinventado.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-green-400">Portão de Entrada</h4>
+                        <p class="text-sm text-gray-400">Dados consolidados da "Revisão de Saúde do Produto" e dos dashboards de negócio.</p>
+                    </div>
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-2 text-red-400">Portão de Saída: Decisão de Evolução</h4>
+                        <p class="text-sm text-gray-400">Decisão formal sobre o próximo passo estratégico do produto: Manter, Melhorar (retorno ao H2), Reinventar (retorno ao H3) ou Descontinuar.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Etapas -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Etapas</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start"><span class="highlight-gold mr-2">1.</span> <div><strong class="text-white">Análise de Performance de Negócio:</strong> O PO analisa dashboards de receita, adoção, engajamento e NPS.</div></li>
+                            <li class="flex items-start"><span class="highlight-gold mr-2">2.</span> <div><strong class="text-white">Coleta de Feedbacks Estratégicos:</strong> O PO consolida feedbacks de clientes, CS e Vendas para identificar oportunidades.</div></li>
+                             <li class="flex items-start"><span class="highlight-gold mr-2">3.</span> <div><strong class="text-white">Proposta de Evolução:</strong> O PO estrutura e apresenta uma proposta para o próximo ciclo do produto.</div></li>
+                             <li class="flex items-start"><span class="highlight-gold mr-2">4.</span> <div><strong class="text-white">Decisão e Roteirização:</strong> A liderança aprova (ou não) a proposta e, se sim, o produto reentra na fábrica através de um "Ciclo de Retorno".</div></li>
+                        </ul>
+                    </div>
+                    <!-- Artefatos -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Artefatos Principais</h4>
+                        <div class="space-y-3 text-sm">
+                            <p><strong class="text-white">Dashboards de Negócio:</strong> Painéis com os KPIs de performance do produto no mercado.</p>
+                            <p class="mt-2"><strong class="text-white">Proposta de Evolução:</strong> Documento que justifica o próximo ciclo de investimento no produto.</p>
+                        </div>
+                    </div>
+                     <!-- Checklist -->
+                    <div class="card rounded-lg p-6">
+                         <h4 class="text-lg font-bold mb-3">Checklist de Saída</h4>
+                         <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Análise de performance do produto apresentada.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Proposta de evolução estruturada.</li>
+                            <li class="flex items-center"><input type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-yellow-500 rounded focus:ring-yellow-500 mr-3"> Decisão formal sobre o próximo ciclo do produto tomada.</li>
+                         </ul>
+                    </div>
+                    <!-- Responsáveis -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Responsáveis</h4>
+                        <div class="space-y-3 text-sm">
+                            <ul class="list-disc list-inside text-gray-400 mt-1">
+                                <li><strong class="text-gray-200">Product Manager (PM) / PO:</strong> Lidera a análise de negócio e a proposta de evolução.</li>
+                                <li><strong class="text-gray-200">Liderança de Produto:</strong> Toma a decisão final sobre o próximo ciclo de investimento.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Indicadores -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Indicadores-Chave</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Product-Market Fit Score:</strong> Medida de quão essencial o produto é para seus usuários.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Taxa de Adoção de Features:</strong> Percentual de usuários que utilizam as funcionalidades chave.</p>
+                            <p class="text-gray-400 mt-1"><strong class="text-white">Lifetime Value (LTV):</strong> Valor total que um cliente gera durante seu ciclo de vida.</p>
+                        </div>
+                    </div>
+                     <!-- Red Flags -->
+                    <div class="card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3">Red Flags / Alertas</h4>
+                         <div class="space-y-3 text-sm">
+                            <p class="text-gray-400"><strong class="text-white">Métricas Estagnadas ou em Queda:</strong> Se a receita, o uso ou a satisfação do cliente param de crescer ou começam a cair, é um sinal de que o produto está a perder relevância.</p>
+                             <p class="text-gray-400 mt-2"><strong class="text-white">Ameaça Competitiva:</strong> Um novo concorrente ou uma mudança no mercado que torna a proposta de valor do seu produto obsoleta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Módulo 7 - Handover -->
+        <div id="handover" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 7: O PROCESSO DE HANDOVER</p>
+                    <h2 class="text-4xl md:text-6xl font-black">A Passagem de Bola</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-8">
+                    <h3 class="text-xl font-bold mb-2">O que é?</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        O Handover, ou <strong class="highlight-gold">"Passagem de Bola"</strong>, é o processo estruturado de transferir o conhecimento e a responsabilidade de um novo produto da equipe de desenvolvimento (que atuou no H2) para a equipe de Operações/Sustentação (que atuará no H1). O objetivo é garantir que o produto possa ser implantado, monitorado e suportado de forma autônoma e eficiente, sem depender constantemente de seus criadores.
+                    </p>
+                </div>
+
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-bold highlight-gold">Fluxo Simplificado do Handover</h3>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                    <!-- Etapa 1 -->
+                    <div class="card p-6 rounded-lg flex-1">
+                        <div class="bg-gray-800 p-3 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 border-2 border-green-400">
+                           <span class="text-2xl font-bold text-green-400">1</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Gatilho: 1ª Venda</h4>
+                        <p class="text-sm text-gray-400">Após o primeiro contrato assinado, o PO preenche o <strong class="text-white">Formulário de Cadastro Técnico</strong>, iniciando formalmente o processo.</p>
+                    </div>
+                    <div class="text-2xl text-gold-500 mx-4 hidden md:block">&rarr;</div>
+                    <!-- Etapa 2 -->
+                    <div class="card p-6 rounded-lg flex-1">
+                         <div class="bg-gray-800 p-3 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 border-2 border-cyan-500">
+                           <span class="text-2xl font-bold text-cyan-500">2</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Validação e Feedback</h4>
+                        <p class="text-sm text-gray-400">As equipes de tecnologia (Cloud, Segurança, etc.) analisam o cadastro e fornecem feedbacks para garantir que o produto está pronto para a sustentação.</p>
+                    </div>
+                    <div class="text-2xl text-gold-500 mx-4 hidden md:block">&rarr;</div>
+                    <!-- Etapa 3 -->
+                    <div class="card p-6 rounded-lg flex-1">
+                         <div class="bg-gray-800 p-3 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 border-2 border-yellow-500">
+                           <span class="text-2xl font-bold text-yellow-500">3</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Enxoval e Capacitação</h4>
+                        <p class="text-sm text-gray-400">O time de produto finaliza o <strong class="text-white">Enxoval no Confluence</strong> com base nos feedbacks e realiza treinamentos formais com as equipes de Operações e CS.</p>
+                    </div>
+                     <div class="text-2xl text-gold-500 mx-4 hidden md:block">&rarr;</div>
+                    <!-- Etapa 4 -->
+                    <div class="card p-6 rounded-lg flex-1">
+                         <div class="bg-gray-800 p-3 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 border-2 border-red-400">
+                           <span class="text-2xl font-bold text-red-400">4</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Marco Final: Passagem de Bola</h4>
+                        <p class="text-sm text-gray-400">Após o produto atingir a maturidade (ex: >1 cliente), o <strong class="text-white">Formulário de Passagem de Bola</strong> é preenchido, oficializando a transferência para o H1.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 card rounded-lg p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Artefatos Essenciais do Processo</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <p class="font-bold">Formulário de Implantação de Cliente</p>
+                            <p class="text-xs text-gray-400 mt-1">Registra dados específicos de cada novo cliente.</p>
+                        </div>
+                         <div class="bg-gray-800 p-4 rounded-lg">
+                            <p class="font-bold">Formulário de Cadastro Técnico</p>
+                            <p class="text-xs text-gray-400 mt-1">O gatilho que inicia o handover.</p>
+                        </div>
+                         <div class="bg-gray-800 p-4 rounded-lg">
+                            <p class="font-bold">Enxoval do Produto</p>
+                            <p class="text-xs text-gray-400 mt-1">A fonte única da verdade sobre o produto no Confluence.</p>
+                        </div>
+                         <div class="bg-gray-800 p-4 rounded-lg">
+                            <p class="font-bold">Formulário de Passagem de Bola</p>
+                            <p class="text-xs text-gray-400 mt-1">Oficializa a transferência para a equipe de sustentação.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Slide 17: Módulo 8 - Ciclos de Retorno -->
+        <div id="return-cycles" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 8: A FÁBRICA VIVA</p>
+                    <h2 class="text-4xl md:text-6xl font-black">Ciclos de Retorno</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-8">
+                    <h3 class="text-xl font-bold mb-2">Por que a Esteira Não é Linear?</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Um produto em escala (H1) não é um projeto finalizado. O mercado muda, novas tecnologias surgem e as necessidades dos clientes evoluem. Os <strong class="highlight-gold">Ciclos de Retorno</strong> são o mecanismo que garante que nossos produtos se adaptem a essa realidade. Eles definem como e quando um produto em operação retorna à fábrica para ser corrigido, melhorado ou completamente reinventado.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <!-- Card 1: Sustentação -->
+                    <div class="card p-8 rounded-lg border-t-4 border-gray-500 flex flex-col h-full">
+                        <h3 class="text-2xl font-bold mb-2 text-gray-300">Sustentação</h3>
+                        <p class="font-bold text-lg text-gray-500 mb-4">(H1)</p>
+                        <div class="space-y-4 flex-grow">
+                            <div>
+                                <h4 class="font-bold text-white">Responsável</h4>
+                                <p class="text-gray-400">Equipe de Suporte/Operações.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Ponto de Entrada</h4>
+                                <p class="text-gray-400">Não entra na fábrica. Um incidente ou bug em produção dispara o processo.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Resultado</h4>
+                                <p class="text-gray-400">Produto restaurado à sua versão estável, operando conforme o SLA.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Melhoria -->
+                    <div class="card p-8 rounded-lg border-t-4 border-cyan-500 flex flex-col h-full">
+                        <h3 class="text-2xl font-bold mb-2 highlight-cyan">Melhoria</h3>
+                         <p class="font-bold text-lg text-cyan-500 mb-4">(H2)</p>
+                        <div class="space-y-4 flex-grow">
+                            <div>
+                                <h4 class="font-bold text-white">Responsável</h4>
+                                <p class="text-gray-400">Time de Produto + Time de Desenvolvimento.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Ponto de Entrada</h4>
+                                <p class="text-gray-400">Retorna ao <strong class="text-white">início do Estágio H2</strong> para desenvolvimento incremental (nova feature, otimização, etc.).</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Resultado</h4>
+                                <p class="text-gray-400">Uma nova versão do produto com handover incremental (apenas das novidades).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Reinvenção -->
+                    <div class="card p-8 rounded-lg border-t-4 border-red-500 flex flex-col h-full">
+                        <h3 class="text-2xl font-bold mb-2 text-red-400">Reinvenção</h3>
+                        <p class="font-bold text-lg text-red-400 mb-4">(H3)</p>
+                         <div class="space-y-4 flex-grow">
+                            <div>
+                                <h4 class="font-bold text-white">Responsável</h4>
+                                <p class="text-gray-400">Liderança de Produto e Stakeholders.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Ponto de Entrada</h4>
+                                <p class="text-gray-400">Retorna ao <strong class="text-white">início do Estágio H3</strong>, tratado como uma nova ideia devido a disrupção de mercado ou obsolescência.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Resultado</h4>
+                                <p class="text-gray-400">Um produto "novo" que percorre todo o ciclo de vida da fábrica novamente (H3 → H2 → H1).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Slide 18: Módulo 9 - Matriz de Decisão -->
+        <div id="decision-matrix" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 9: GERENCIANDO A COMPLEXIDADE</p>
+                    <h2 class="text-4xl md:text-6xl font-black">Matriz de Decisão de Customização</h2>
+                </div>
+
+                <div class="card rounded-lg p-8 text-left mb-8">
+                    <h3 class="text-xl font-bold mb-2">Como Decidir o Futuro de uma Demanda?</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Quando uma solicitação de cliente para uma nova funcionalidade chega, o Product Manager (PM) é o responsável por analisá-la. A <strong class="highlight-gold">Matriz de Decisão</strong> é o framework utilizado para classificar o pedido com base em seu <strong class="highlight-gold">Valor Estratégico</strong> para o negócio e sua <strong class="highlight-gold">Complexidade Técnica</strong> de implementação. Essa análise garante que as decisões sejam tomadas de forma estratégica, protegendo o produto e alinhando os esforços de desenvolvimento com os objetivos da empresa.
+                    </p>
+                </div>
+                
+                <div class="relative flex items-center justify-center">
+                    <div class="absolute -left-8 md:-left-12 transform -rotate-90 text-lg font-bold text-gray-400">
+                        <span class="transform translate-y-1/2">VALOR ESTRATÉGICO</span>
+                    </div>
+                    <div class="absolute top-full mt-4 text-lg font-bold text-gray-400">
+                        COMPLEXIDADE TÉCNICA
+                    </div>
+
+                    <div class="grid grid-cols-2 grid-rows-2 gap-4 w-full max-w-4xl">
+                        <!-- Quadrante Superior Esquerdo -->
+                        <div class="card p-6 rounded-lg border-2 border-green-500 h-full">
+                            <h4 class="text-xl font-bold text-green-400">Melhoria do Produto</h4>
+                             <p class="text-sm text-gray-400 mt-2"><strong>O que é:</strong> Uma funcionalidade alinhada à estratégia, que atende a vários clientes e é tecnicamente simples.</p>
+                            <p class="text-sm text-gray-300 mt-2"><strong>Ação:</strong> O PM prioriza a demanda no backlog principal para que seja incorporada ao produto padrão para todos os clientes, entrando no <strong class="text-white">Ciclo de Melhoria (H2)</strong>.</p>
+                        </div>
+                        <!-- Quadrante Superior Direito -->
+                        <div class="card p-6 rounded-lg border-2 border-yellow-500 h-full">
+                            <h4 class="text-xl font-bold text-yellow-400">Investimento Estratégico</h4>
+                            <p class="text-sm text-gray-400 mt-2"><strong>O que é:</strong> Uma grande oportunidade de inovação (ex: novo módulo, IA) que é complexa, mas pode gerar um grande diferencial competitivo.</p>
+                            <p class="text-sm text-gray-300 mt-2"><strong>Ação:</strong> O PM avalia o ROI e trata como um projeto de P&D. Entra no <strong class="text-white">Ciclo de Melhoria (H2)</strong> ou até de <strong class="text-white">Reinvenção (H3)</strong>, podendo negociar um co-investimento com o cliente.</p>
+                        </div>
+                        <!-- Quadrante Inferior Esquerdo -->
+                        <div class="card p-6 rounded-lg border-2 border-cyan-500 h-full">
+                            <h4 class="text-xl font-bold text-cyan-400">Serviço Profissional</h4>
+                            <p class="text-sm text-gray-400 mt-2"><strong>O que é:</strong> Uma configuração ou relatório específico que atende apenas um cliente e não agrega valor ao produto principal.</p>
+                            <p class="text-sm text-gray-300 mt-2"><strong>Ação:</strong> A demanda <strong class="text-white">não entra na esteira</strong> de produto. É direcionada à equipe de Serviços Profissionais, que orça e executa o trabalho como um serviço pago.</p>
+                        </div>
+                        <!-- Quadrante Inferior Direito -->
+                        <div class="card p-6 rounded-lg border-2 border-red-500 h-full">
+                            <h4 class="text-xl font-bold text-red-400">Rejeitar ou Projeto Customizado</h4>
+                            <p class="text-sm text-gray-400 mt-2"><strong>O que é:</strong> A "zona de perigo" - uma demanda complexa, de nicho e sem alinhamento estratégico.</p>
+                            <p class="text-sm text-gray-300 mt-2"><strong>Ação:</strong> A regra é <strong class="text-white">rejeitar</strong> para proteger o produto. Se o cliente for vital, a demanda vira um <strong class="text-white">projeto separado</strong>, com contrato, time e orçamento próprios, sem impactar o produto de prateleira.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Slide 19: Módulo 10 - Trilhas de Produção -->
+        <div id="production-tracks" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 10: OS MOTORES DA FÁBRICA</p>
+                    <h2 class="text-4xl md:text-6xl font-black">Trilhas de Produção Especializadas</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="card rounded-lg p-8 text-left flex flex-col justify-between h-full">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">O que são as Trilhas de Produção?</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Se a Esteira Principal é a <strong class="highlight-gold">linha de montagem central</strong> da nossa fábrica, as Trilhas de Produção são as <strong class="highlight-gold">estações de trabalho especializadas</strong>. Após um produto ser validado no H3, ele é roteirizado para a trilha técnica mais adequada à sua natureza. Cada trilha possui seu próprio playbook de execução, com processos, ferramentas e rituais otimizados para aquele tipo de desenvolvimento.
+                            </p>
+                             <p class="mt-4 text-gray-300 leading-relaxed">
+                                Isso garante que, seja para construir um modelo de Machine Learning, uma política de crédito ou um dashboard, a equipe técnica siga um caminho padronizado e de alta performance.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="text-xl font-bold text-white mb-2">Criando Novas Capacidades na Fábrica</h4>
+                            <p class="text-gray-400 font-semibold leading-relaxed">
+                                Quando um produto inovador não se encaixa nos modelos atuais, a responsabilidade de desenhar uma <strong class="text-white">nova trilha de produção</strong> recai sobre o Arquiteto de Soluções ou o Lead Tech. Esta não é uma decisão simples: criar uma nova trilha significa estabelecer uma nova esteira de governança técnica. O arquiteto deve definir o playbook de construção para o H2 e, crucialmente, alinhar como será o futuro da sustentação desse novo tipo de produto.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Trilha 1 -->
+                        <div class="card p-4 rounded-lg flex items-center space-x-4 border-l-4 border-blue-500">
+                            <div class="flex-shrink-0">
+                                <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6V3m0 18v-3M5.636 5.636l-1.414-1.414m15.152 0l-1.414 1.414M5.636 18.364l-1.414 1.414m15.152 0l-1.414-1.414"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Modelagem Preditiva</h4>
+                                <p class="text-sm text-gray-400">Desenvolvendo modelos (scores, ML/IA) para insights futuros.</p>
+                            </div>
+                        </div>
+                        <!-- Trilha 2 -->
+                        <div class="card p-4 rounded-lg flex items-center space-x-4 border-l-4 border-cyan-500">
+                             <div class="flex-shrink-0">
+                                <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Plataforma & SaaS</h4>
+                                <p class="text-sm text-gray-400">Construindo plataformas e aplicações robustas com interface de usuário.</p>
+                            </div>
+                        </div>
+                        <!-- Trilha 3 -->
+                        <div class="card p-4 rounded-lg flex items-center space-x-4 border-l-4 border-green-500">
+                             <div class="flex-shrink-0">
+                               <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Business Intelligence</h4>
+                                <p class="text-sm text-gray-400">Criando dashboards e relatórios para insights de dados.</p>
+                            </div>
+                        </div>
+                        <!-- Trilha 4 -->
+                        <div class="card p-4 rounded-lg flex items-center space-x-4 border-l-4 border-purple-500">
+                             <div class="flex-shrink-0">
+                                <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Consultoria & Políticas</h4>
+                                <p class="text-sm text-gray-400">Fornecendo consultoria e estabelecendo políticas de decisão.</p>
+                            </div>
+                        </div>
+                        <!-- Trilha 5 - Nova -->
+                        <div class="card p-4 rounded-lg flex items-center space-x-4 border-l-4 border-dashed border-yellow-500">
+                             <div class="flex-shrink-0">
+                                <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">IA Generativa (Nova Trilha)</h4>
+                                <p class="text-sm text-gray-400">Implementando IA para automação e análise avançada.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Módulo 11 - Gestão Simplificada -->
+        <div id="management" class="slide">
+            <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 11: GESTÃO E VISIBILIDADE DA FÁBRICA</p>
+                    <h2 class="text-4xl md:text-6xl font-black">Gerenciando a Complexidade com Simplicidade</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div class="card rounded-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-4">Central de Comando: Confluence & Jira</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Este playbook não cria novas ferramentas, mas organiza o fluxo de trabalho dentro do ecossistema que já utilizamos:
+                        </p>
+                        <ul class="mt-4 space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <strong class="text-cyan-400 mr-3 mt-1">&#10148;</strong>
+                                <div><strong class="text-white">Confluence:</strong> É a nossa fonte única da verdade. Cada produto possui sua página (o "Enxoval"), onde toda a documentação é centralizada.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <strong class="text-cyan-400 mr-3 mt-1">&#10148;</strong>
+                                <div><strong class="text-white">Jira:</strong> É o nosso motor de execução. As tarefas, gates de aprovação e o progresso dos produtos são gerenciados em um workflow padronizado.</div>
+                            </li>
+                        </ul>
+                        <p class="mt-4 text-gray-400 text-sm">
+                            Os artefatos, como formulários, já estão integrados a este fluxo para automatizar a comunicação.
+                        </p>
+                    </div>
+
+                    <div class="card rounded-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-4">Dashboards de Gestão da Fábrica</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Para a liderança de produtos e superintendentes, a gestão da fábrica é consolidada em dashboards estratégicos.
+                        </p>
+                         <ul class="mt-4 space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <strong class="text-green-400 mr-3 mt-1">&#10148;</strong>
+                                <div><strong class="text-white">Raio-X da Neurotech:</strong> Visão completa do pipeline de produtos, segmentada por Business Unit.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <strong class="text-green-400 mr-3 mt-1">&#10148;</strong>
+                                <div><strong class="text-white">Alertas Inteligentes:</strong> Identificação automática de produtos com "red flags" no processo, como estouro de lead time, baixa conversão de vendas ou receita abaixo do esperado.</div>
+                            </li>
+                        </ul>
+                        <p class="mt-4 text-gray-400 text-sm">
+                           Essa visão centralizada permite uma tomada de decisão rápida e baseada em dados sobre a saúde do nosso portfólio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 21: Módulo 12 - IA da Fábrica -->
+        <div id="factory-ai" class="slide">
+            <div class="max-w-5xl w-full text-center">
+                 <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 12: O FUTURO DA GESTÃO</p>
+                    <h2 class="text-4xl md:text-6xl font-black">Assistente IA da Fábrica</h2>
+                </div>
+                
+                <div class="card rounded-lg p-10">
+                    <svg class="w-24 h-24 text-yellow-400 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6V3m0 18v-3M5.636 5.636l-1.414-1.414m15.152 0l-1.414 1.414M5.636 18.364l-1.414 1.414m15.152 0l-1.414-1.414"></path></svg>
+                    <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                        Para facilitar a navegação neste processo, teremos um <strong class="text-white">assistente de IA Generativa</strong> treinado com todo o conteúdo deste playbook, a documentação dos produtos no Confluence, o status do Kanban no Jira, e os indicadores dos dashboards.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mt-10 text-left">
+                        <div class="bg-gray-800/50 p-6 rounded-lg">
+                            <h4 class="text-xl font-bold text-white mb-2">Para a Gestão</h4>
+                            <p class="text-gray-400">O assistente fornecerá respostas rápidas sobre o status da fábrica, identificando gargalos, compilando relatórios de performance e ajudando na tomada de decisões estratégicas com base em dados em tempo real.</p>
+                        </div>
+                        <div class="bg-gray-800/50 p-6 rounded-lg">
+                            <h4 class="text-xl font-bold text-white mb-2">Para PMs e Tech Leaders</h4>
+                            <p class="text-gray-400">Atuará como um co-piloto, ajudando a co-construir os artefatos de cada sub-fase (como Teses de Produto e Business Cases), tirando dúvidas sobre o processo e garantindo que as melhores práticas sejam seguidas.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Slide 22: Módulo 13 - Exemplo Dashboard -->
+        <div id="dashboard-example" class="slide">
+             <div class="max-w-7xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 13: VISÃO ESTRATÉGICA</p>
+                    <h2 class="text-4xl md:text-6xl font-black">Exemplo de Dashboard da Fábrica</h2>
+                </div>
+                <div class="card rounded-lg p-6 w-full">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Coluna 1 -->
+                        <div class="space-y-6">
+                            <div class="bg-gray-800/50 p-4 rounded-lg">
+                                <h4 class="font-bold text-white mb-2">Saúde Geral da Fábrica</h4>
+                                <div class="w-full bg-gray-700 rounded-full h-8">
+                                    <div class="bg-green-500 h-8 rounded-full text-center text-black font-bold flex items-center justify-center" style="width: 85%">85% OK</div>
+                                </div>
+                            </div>
+                             <div class="bg-gray-800/50 p-4 rounded-lg">
+                                <h4 class="font-bold text-white mb-2">Produtos por Horizonte</h4>
+                                <div class="flex justify-around text-center">
+                                    <div><p class="text-3xl font-bold">12</p><p class="text-sm text-gray-400">H1 (Escala)</p></div>
+                                    <div><p class="text-3xl font-bold">8</p><p class="text-sm text-gray-400">H2 (Construção)</p></div>
+                                    <div><p class="text-3xl font-bold">5</p><p class="text-sm text-gray-400">H3 (Validação)</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Coluna 2 -->
+                        <div class="bg-gray-800/50 p-4 rounded-lg">
+                             <h4 class="font-bold text-white mb-2">Alertas Principais (Red Flags)</h4>
+                             <ul class="space-y-3">
+                                <li class="bg-red-900/50 p-2 rounded-md"><p class="font-semibold">Produto X:</p><p class="text-sm text-red-300">Lead Time do H2 excedido em 15 dias.</p></li>
+                                <li class="bg-yellow-900/50 p-2 rounded-md"><p class="font-semibold">Produto Y:</p><p class="text-sm text-yellow-300">Baixa taxa de conversão na 1ª venda.</p></li>
+                             </ul>
+                        </div>
+                        <!-- Coluna 3 -->
+                        <div class="space-y-6">
+                            <div class="bg-gray-800/50 p-4 rounded-lg text-center">
+                                <h4 class="font-bold text-white">Receita Total (ARR)</h4>
+                                <p class="text-4xl font-bold text-green-400 mt-2">R$ 15.2M</p>
+                            </div>
+                             <div class="bg-gray-800/50 p-4 rounded-lg text-center">
+                                <h4 class="font-bold text-white">Ciclo de Vendas Médio</h4>
+                                <p class="text-4xl font-bold mt-2">45 dias</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 23: Módulo 14 - Exemplo Interação IA -->
+        <div id="ai-interaction-example" class="slide">
+            <div class="max-w-4xl w-full">
+                <div class="text-center mb-8">
+                    <p class="highlight-gold font-semibold">MÓDULO 14: A FÁBRICA INTELIGENTE</p>
+                    <h2 class="text-4xl md:text-6xl font-black">Interagindo com a IA da Fábrica</h2>
+                </div>
+
+                <div class="card rounded-lg p-6 w-full">
+                    <div class="space-y-4">
+                        <!-- Pergunta do Usuário -->
+                        <div class="flex justify-end">
+                            <div class="bg-blue-600 text-white p-3 rounded-lg max-w-lg">
+                                <p class="font-bold">PM do Produto Z</p>
+                                <p>Quais são os critérios de saída para a sub-fase H3.2 e quais produtos estão atualmente com alerta nesta fase?</p>
+                            </div>
+                        </div>
+                        <!-- Resposta da IA -->
+                        <div class="flex justify-start">
+                            <div class="bg-gray-700 p-3 rounded-lg max-w-lg">
+                                <p class="font-bold text-cyan-400">Assistente IA da Fábrica</p>
+                                <p class="mt-2">Claro! Os critérios de saída para a sub-fase <strong class="text-white">H3.2 (Análise de Mercado e Viabilidade)</strong> são:</p>
+                                <ul class="list-disc list-inside mt-2 text-sm">
+                                    <li>Business Case completo e aprovado.</li>
+                                    <li>Pareceres de viabilidade (técnico, jurídico, riscos) anexados.</li>
+                                    <li>Validação na reunião de Privacy by Design realizada.</li>
+                                </ul>
+                                <p class="mt-3">Atualmente, o <strong class="text-yellow-400">Produto K</strong> está com um alerta nesta fase por <strong class="text-yellow-400">atraso na entrega do parecer de viabilidade jurídica</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 24: Módulo 15 - Encerramento -->
+        <div id="conclusion" class="slide">
+            <div class="max-w-4xl w-full text-center">
+                <div class="card rounded-lg p-12">
+                    <h2 class="text-4xl md:text-5xl font-black highlight-gold mb-4">Um Processo em Constante Evolução</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                        Agradecemos por ter lido até aqui. Este playbook é um documento vivo, que será continuamente refinado com os aprendizados da nossa jornada.
+                    </p>
+                    <div class="mt-10 border-t border-gray-700 pt-6">
+                        <p class="text-gray-400">Material refinado por:</p>
+                        <p class="text-white text-xl font-semibold mt-2">Arthur Maranhão (Tuca) + Gemini</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    
+    <script>
+        // Simple scroll navigation
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        const slideContainer = document.querySelector('.slide-container');
+
+        function scrollToSlide(slideIndex) {
+            if (slideIndex >= 0 && slideIndex < slides.length) {
+                slides[slideIndex].scrollIntoView({ behavior: 'smooth' });
+                currentSlide = slideIndex;
+            }
+        }
+        
+        slideContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const scrollDirection = e.deltaY > 0 ? 1 : -1;
+            // Debounce scrolling
+            if (slideContainer.isScrolling) return;
+            slideContainer.isScrolling = true;
+            scrollToSlide(currentSlide + scrollDirection);
+            setTimeout(() => { slideContainer.isScrolling = false; }, 1000);
+        }, { passive: false });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+                e.preventDefault();
+                scrollToSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                scrollToSlide(currentSlide - 1);
+            }
+        });
+    </script>
+
+</body>
+</html>
